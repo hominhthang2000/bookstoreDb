@@ -13,14 +13,14 @@ const SlideFirst = () => {
   };
   return (
     <Slider {...settings} className="w-full h-full">
-      <div className="relative w-ful max-h-[650px] min-h-[650px] ">
+      <div className="relative w-ful max-h-[640px] min-h-[640px] ">
         <div className="flex justify-center items-center absolute top-[3%] right-0 left-[1%] bestseller w-[200px] h-[50px] border border-solid border-white rounded-bl-xl rounded-br-xl rounded-tr-xl rounded-tl-none">
           <span className=" textseller text-[20px] font-bold text-white">
             BESTSELLER BOOK
           </span>
         </div>
         <img
-          className="w-[700px] h-[650px] object-fill"
+          className="w-[700px] h-[640px] object-fill"
           src="./Images/91xUsdujK3L.jpg"
           alt="Slider 1 "
         />
@@ -38,7 +38,7 @@ const SlideFirst = () => {
           </span>
         </div>
         <img
-          className="w-[700px] h-[650px] object-fill"
+          className="w-[700px] h-[640px] object-fill"
           src="./Images/9781913484385.jpg"
           alt="Slider 1 "
         />
@@ -56,7 +56,7 @@ const SlideFirst = () => {
           </span>
         </div>
         <img
-          className="w-[700px] h-[650px] object-fill"
+          className="w-[700px] h-[640px] object-fill"
           src="./Images/91wpXnQqMkL.jpg"
           alt="Slider 1 "
         />
