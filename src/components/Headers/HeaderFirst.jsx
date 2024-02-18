@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -86,6 +86,13 @@ const HeaderFirst = () => {
   const [hoverMenu, sethoveMenu] = useState("");
   const [isMenuPage, setMenuPage] = useState("");
   const [isCatagory, setCatagory] = useState("");
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const getUser = localStorage.getItem("user");
+    setUser(JSON.parse(getUser));
+  }, []);
+
   const box = useRef(null);
   useEffect(() => {
     const handleClickOverlay = (e) => {
@@ -98,13 +105,27 @@ const HeaderFirst = () => {
       document.removeEventListener("click", handleClickOverlay);
     };
   }, [isMenu]);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setUser(null);
+  };
   return (
     <div>
       <div className="container">
         <div className="grid-cols-12 mt-3 grid items-center">
-          <div className="text-[40px] font-bold text-[#62ab00] col-span-3">
-            BOOK STORE
+          <div className="flex col-span-3 items-center">
+            <img
+              className=" mr-2 h-24 w-auto"
+              src="./Images/vector 3222 book .jpg"
+              alt="Your Company"
+            />
+            <div className="h-full flex flex-col items-center text-[30px] font-bold text-[#62ab00] ">
+              <span className="leading-[30px]">RỒNG</span>
+              <span className="leading-[30px]">XANH</span>
+            </div>
           </div>
+
           <div className="flex col-span-4 h-[40px]">
             <input
               className="border-black border-[1px] w-[370px] text-center rounded"
@@ -116,15 +137,34 @@ const HeaderFirst = () => {
           </div>
           <div className="col-span-5 gap-6 flex justify-end text-[18px]">
             <div>
-              <div className="  ">
-                <Link to="/#" className="font-bold hover:text-[#62ab00]">
-                  Đăng nhập
-                </Link>
-                <br></br>
-                <span>or</span>
-                <Link to="/#"> Đăng ký</Link>
-                <i class="fa-brands fa-opencart"></i>
-              </div>
+              {user ? (
+                <div className="h-full flex flex-col items-center">
+                  <div>
+                    <span className="text-[14px]">Xin chào, </span>
+                    <span className="text-[16px] font-medium">
+                      {user?.username}
+                    </span>
+                  </div>
+                  <div>
+                    <span
+                      onClick={handleLogout}
+                      className="text-[16px] hover:underline cursor-pointer hover:text-red-900 hover:font-medium"
+                    >
+                      Đăng xuất
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div className="  ">
+                  <Link to="/Login" className="font-bold hover:text-[#62ab00]">
+                    Đăng nhập
+                  </Link>
+                  <br></br>
+                  <span>or</span>
+                  <Link to="/Singup"> Đăng ký</Link>
+                  <i class="fa-brands fa-opencart"></i>
+                </div>
+              )}
             </div>
             <div>
               <div className="flex">

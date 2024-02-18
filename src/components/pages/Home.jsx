@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BaseHeader from "../Headers";
 import MainLayout from "../Layouts/MainLayout";
 import SlideFirst from "../Sliders/SlideFirst";
